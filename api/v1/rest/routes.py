@@ -9,6 +9,11 @@ route_patterns = [
     url(r'^/application/(?P<name>[^/]+)/versions/?$', h.ApplicationVersionListHandler, name='app_versions'),
     url(r'^/application/(?P<name>[^/]+)/(?P<version>[^/]+)/?$', h.ApplicationVersionHandler, name='app_version'),
 
+    url(r'^/application/(?P<name>[^/]+)/(?P<version>[^/]+)/build/set/?$',
+        h.ApplicationVersionSetBuildHandler, name='set_build_for_app_version'),
+    url(r'^/application/(?P<name>[^/]+)/(?P<version>[^/]+)/build/discard/?$',
+        h.ApplicationVersionDiscardBuildHandler, name='discard_build_for_app_version'),
+
     url(r'^/build/(?P<id>[^/]+)/?$', h.BuildHandler, name='build'),
     url(r'^/build/?$', h.BuildHandler, name='build_create'),
     url(r'^/builds/?$', h.BuildListHandler, name='builds'),

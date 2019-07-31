@@ -20,18 +20,6 @@ class ApplicationVersion(db.Model):
     build_id = db.Column(db.Integer, db.ForeignKey('builds.id'))
     build = db.relationship('Build')
 
-    def _set_build(self, build_id):
-        self.build_id = build_id
-        self.save()
-
-    @as_future
-    def set_build(self, build_id):
-        self._set_build(build_id=build_id)
-
-    @as_future
-    def discard_build(self):
-        self._set_build(build_id=None)
-
 
 class Build(InternalAPIMixin, db.Model):
     __tablename__ = 'builds'
