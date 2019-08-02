@@ -28,7 +28,7 @@ class Build(InternalAPIMixin, db.Model):
     user_id = db.Column(db.Integer, nullable=False)
     created = db.Column(db.DateTime, default=timezone.now)
     description = db.Column(db.String(512), nullable=False)
-    # file = db.Column(db.FileType(), nullable=False)
+    file = db.Column(db.FileType(upload_to='config/builds'), nullable=False)
     payload = db.Column(JSONType, nullable=False, default={})
     enabled = db.Column(db.Boolean, nullable=False, default=True)
 
